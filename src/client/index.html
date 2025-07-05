@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+    background-color: black;
+    }
+* {box-sizing: border-box;}
+.main{
+    margin-top: 150px;
+    margin-left: 35px;
+    margin-right: 35px;
+}
+.form-inline {  
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+.Thanks{
+    margin: 0px 0px 13px 0px;
+    font-size: 22px;
+    color: #FFFFFF;
+}
+.Verify{
+    margin: 0px 0px 35px 0px;
+    font-size: 32px;
+    color: #09e099;
+}
+.text{
+    margin:  0px 0px 21px 0px;
+    font-size: 18px;
+    color: #818389;
+}
+.button{
+    display: block;
+    border-radius: 4px;
+    margin: 0 auto;
+    border: none;
+    box-shadow: none;
+    width: 330px;
+    height: 36px;
+    background-color: #4654EA;
+}
+.next{
+    margin: 0px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+
+.form-inline input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.form-inline button {
+  padding: 10px 20px;
+  background-color: dodgerblue;
+  border: 1px solid #ddd;
+  color: white;
+  cursor: pointer;
+}
+
+.form-inline button:hover {
+  background-color: royalblue;
+}
+
+@media (max-width: 800px) {
+  .form-inline input {
+    margin: 10px 0;
+  }
+  
+  .form-inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="main"><p class="Thanks">Thank you for</p>
+    <p class="Verify">Verifying your mail!</p>
+    <p class="text">Now we can communicate with you outside of this app and help you to reset your password etc.You may update your email settings anytime you like.</p>
+    
+    
+    </div>
+    <button class="button"><p class="next">Next</p></button>
+
+</body>
+</html>

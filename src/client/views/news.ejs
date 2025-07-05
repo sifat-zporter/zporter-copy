@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="../css/zporter-news.css" />
+
+<title>
+    <%= headline%>
+</title>
+
+<body>
+    <header>
+        <div>
+            <img src="../assets/logo.png" alt="logo" height="40px" />
+        </div>
+        <div style="margin-left: 1rem">News</div>
+    </header>
+    <div id="article">
+        <!-- article heading -->
+        <div class="article-heading">
+            <img class="heading-poster" src="<%= posterImageUrl%>" alt="heading-poster" loading="lazy" width="100%" />
+            <div class="overlay-title">
+                <h1 class="page-title">
+                    <%= headline%>
+                </h1>
+            </div>
+        </div>
+        <!-- article body -->
+        <div class="article-body">
+            <div class="article-author-info">
+                <img src="https://firebasestorage.googleapis.com/v0/b/zporter-dev-media/o/media%2Ficon_zporter_white48.png?alt=media&token=d9e219c4-4474-4f76-8aaa-c8b1abc35cd4"
+                    alt="zporter-logo" loading="lazy" />
+                <div class="author-info">
+                    <div class="author-name">
+                        Zporter
+                    </div>
+                    <div class="publish-timestamp">
+                        <%= createdAt%>
+                    </div>
+                </div>
+            </div>
+            <div class="excerpt-text">
+                <%= excerptText%>
+            </div>
+
+            <%- content%>
+
+        </div>
+        <!-- article tag -->
+        <div class="article-tags">
+            <div class="tag-title">Tags</div>
+            <ul class="tag-wrapper">
+                <% for (const tag of tags) { %>
+                    <% if (tag) { %>
+                        <li><a class="tag" href="http://zporter.co/" target="_blank">
+                                <%= tag%>
+                            </a></li>
+
+                        <% } %>
+                            <% } %>
+            </ul>
+        </div>
+    </div>
+
+    <script defer>
+        const iframes = document.querySelectorAll('iframe')
+
+        iframes.forEach(iframe => {
+            iframe.loading = 'lazy'
+        })
+
+        const images = document.querySelectorAll('img')
+
+        images.forEach(img => {
+            img.loading = 'lazy'
+        })
+    </script>
+</body>
+
+
+
+
+
+</html>

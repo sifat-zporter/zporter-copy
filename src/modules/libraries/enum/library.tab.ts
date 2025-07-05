@@ -1,0 +1,11 @@
+export enum LibraryTab {
+  SAVED = 'SAVED',
+  YOURS = 'YOURS',
+  TECHNICAL = 'TECHNICAL',
+  TACTICAL = 'TACTICAL',
+  PHYSICAL = 'PHYSICAL',
+  MENTAL = 'MENTAL',
+  REHAB = 'REHAB',
+  OTHER = 'OTHER',
+  ALL = 'ALL',
+}

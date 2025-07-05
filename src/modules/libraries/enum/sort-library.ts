@@ -1,0 +1,14 @@
+export enum LibraryFieldSort {
+  NAME_ASC = 'NAME_ASC',
+  NAME_DESC = 'NAME_DESC',
+  CREATOR_ASC = 'CREATOR_ASC',
+  CREATOR_DESC = 'CREATOR_DESC',
+  CREATED_ASC = 'CREATED_ASC',
+  CREATED_DESC = 'CREATED_DESC',
+}
+
+export enum LibraryFilter {
+  NAME = 'NAME',
+  CREATOR = 'CREATOR',
+  CREATED = 'CREATED',
+}

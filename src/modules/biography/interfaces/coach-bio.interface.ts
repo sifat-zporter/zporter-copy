@@ -1,0 +1,43 @@
+import { ILastMatch } from '../../diaries/interfaces/lastMatch.interface';
+import { ILastTraining } from '../../diaries/interfaces/lastTraining.interface';
+import { UserTypes } from '../../users/enum/user-types.enum';
+import { ICoachRadarSkills } from '../../users/interfaces/coaches.interface';
+import { IVideoLink } from '../../users/interfaces/common.interface';
+import { IUserSocialLinks } from '../../users/interfaces/users.interface';
+
+export interface CoachBio {
+  lastUpdatedDate: string;
+  username: string;
+  faceImageUrl: string;
+  firstName: string;
+  lastName: string;
+  position: string;
+  currentClubIconUrl: string;
+  contractedUntil: string;
+  education: string;
+  expLevel: string;
+  birthDay: string;
+  countryFlagUrl: string;
+  age: number;
+  summary: string;
+  topVideoLinks: IVideoLink[] | [];
+  specialities: string[];
+  starRating: number;
+  circleCompleted: number;
+  coachRadarSkills: ICoachRadarSkills;
+  socialLinks: IUserSocialLinks;
+  userRole: UserTypes;
+  teamIds?: string[];
+  year: string | number;
+  city: string;
+  country: string;
+  height: number | string;
+  weight: number | string;
+  bioUrl: string;
+  currentClub: string;
+  primaryTeam?: Record<string, any>;
+  currentTeamName: string;
+  managementStyle: string;
+  lastMatch?: ILastMatch;
+  lastTraining?: ILastTraining;
+}

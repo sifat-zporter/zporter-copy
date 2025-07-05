@@ -1,0 +1,68 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '--build-arg'
+      - MY_ENV=$_MY_ENV
+      - '--build-arg'
+      - ELASTIC=$_ELASTIC
+      - '--build-arg'
+      - FIREBASE=$_FIREBASE
+      - '--build-arg'
+      - FIREBASE_PRIVATE_KEY=$_FIREBASE_PRIVATE_KEY
+      - '--build-arg'
+      - NEW_RELIC=$_NEW_RELIC
+      - '--build-arg'
+      - SENDGRID=$_SENDGRID
+      - '--build-arg'
+      - TYPEORM=$_TYPEORM
+      - '--no-cache'
+      - '-t'
+      - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA'
+      - server
+      - '-f'
+      - server/Dockerfile
+    id: Build
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA'
+    id: Push
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+    args:
+      - run
+      - services
+      - update
+      - $_SERVICE_NAME
+      - '--platform=managed'
+      - '--image=$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA'
+      - >-
+        --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID,$_LABELS
+      - '--region=$_DEPLOY_REGION'
+      - '--quiet'
+    id: Deploy
+    entrypoint: gcloud
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+    id: Delete
+    args:
+      - container
+      - images
+      - delete
+      - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA'
+    entrypoint: gcloud
+images:
+  - '$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA'
+options:
+  substitutionOption: ALLOW_LOOSE
+substitutions:
+  _DEPLOY_REGION: asia-northeast1
+  _GCR_HOSTNAME: asia.gcr.io
+  _LABELS: gcb-trigger-id=31f28a4b-3a40-439a-9f6d-6bc726d6e795
+  _TRIGGER_ID: 31f28a4b-3a40-439a-9f6d-6bc726d6e795
+  _PLATFORM: managed
+  _SERVICE_NAME: zporter-api-dev
+tags:
+  - gcp-cloud-build-deploy-cloud-run
+  - gcp-cloud-build-deploy-cloud-run-managed
+  - zporter-api-dev
+timeout: 1800s

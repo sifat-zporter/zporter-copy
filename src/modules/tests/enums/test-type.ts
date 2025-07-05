@@ -1,0 +1,7 @@
+export enum TestType {
+  TECHNICAL = 'TECHNICAL',
+  TACTICAL = 'TACTICAL',
+  PHYSICAL = 'PHYSICAL',
+  MENTAL = 'MENTAL',
+  OTHER = 'OTHER',
+}

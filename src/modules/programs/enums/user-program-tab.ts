@@ -1,0 +1,13 @@
+export enum UserProgramTab {
+  DONE = 'DONE',
+  ACTIVE = 'ACTIVE',
+  NEW = 'NEW',
+  TECHNICAL = 'TECHNICAL',
+  TACTICAL = 'TACTICAL',
+  PHYSICAL = 'PHYSICAL',
+  MENTAL = 'MENTAL',
+  REHAB = 'REHAB',
+  OTHER = 'OTHER',
+  YOURS = 'YOURS',
+  SAVED = 'SAVED',
+}
